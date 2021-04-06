@@ -14,7 +14,7 @@ namespace WebGestor.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpGet]
 
-        //[Route("api/Gestor/CambioConcesionario")]
+        
         public Object Get()
         {
             string Satelite = "AdjudicacionSI";

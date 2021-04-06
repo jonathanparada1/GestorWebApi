@@ -48,9 +48,12 @@
     <Compile Include="Consultas\ActualizaDatosCliLN.cs" />
     <Compile Include="Consultas\AdjudicacionLN.cs" />
     <Compile Include="Consultas\AnulaAdjudicacionLN.cs" />
+    <Compile Include="Consultas\AplicacionCesionLN.cs" />
+    <Compile Include="Consultas\CambioBienLN.cs" />
     <Compile Include="Consultas\CambioConcesionarioLN.cs" />
     <Compile Include="Consultas\ClassGenericaSatelitesLN.cs" />
     <Compile Include="Consultas\EstadoCanceladoLN.cs" />
+    <Compile Include="Consultas\GrabacionProrrogaLN.cs" />
     <Compile Include="Consultas\InterfazGestor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -220,8 +220,11 @@
     <Compile Include="Controllers\ActualizaDatosCliController.cs" />
     <Compile Include="Controllers\AdjudicacionController.cs" />
     <Compile Include="Controllers\AnulaAdjudicacionController.cs" />
+    <Compile Include="Controllers\AplicacionCesionController.cs" />
+    <Compile Include="Controllers\CambioBienController.cs" />
     <Compile Include="Controllers\EstadoCanceladoController.cs" />
     <Compile Include="Controllers\CambioConcesionarioController.cs" />
+    <Compile Include="Controllers\GrabacionProrrogaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

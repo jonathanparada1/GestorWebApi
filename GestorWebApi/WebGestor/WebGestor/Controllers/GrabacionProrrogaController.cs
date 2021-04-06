@@ -8,22 +8,24 @@ using WsGestor.LN.Consultas;
 
 namespace WebGestor.Controllers
 {
-    public class EstadoCanceladoController : ApiController
+    public class GrabacionProrrogaController : ApiController
     {
+        // GET: GrabacionProrroga
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpGet]
-        //[Route("api/Gestor/EstadoCancelado")]
+
         public Object Get()
         {
-            string Satelite = "EstadoCanceladoSI";
-            string Programa = "EstadoCancelado";
-            InterfazGestor ImplementacionGestor = new EstadoCanceladoLN();
+            string Satelite = "GrabacionProrrogaSI";
+            string Programa = "GrabacionProrroga";
+            InterfazGestor ImplementacionGestor = new GrabacionProrrogaLN();
 
             DataSet DTGestor = new DataSet();
             String DsGestor = new WsConsultas().ConsultaGenericaSateliteGestor(ImplementacionGestor, Satelite, Programa);
             System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
             DTGestor.ReadXml(xmlGestor);
             return DTGestor;
+
         }
     }
 }

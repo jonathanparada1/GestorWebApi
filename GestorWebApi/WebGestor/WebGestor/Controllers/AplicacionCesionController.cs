@@ -8,16 +8,18 @@ using WsGestor.LN.Consultas;
 
 namespace WebGestor.Controllers
 {
-    public class EstadoCanceladoController : ApiController
+    public class AplicacionCesionController : ApiController
     {
+    
+        // GET: AplicacionCesion
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpGet]
-        //[Route("api/Gestor/EstadoCancelado")]
+
         public Object Get()
         {
-            string Satelite = "EstadoCanceladoSI";
-            string Programa = "EstadoCancelado";
-            InterfazGestor ImplementacionGestor = new EstadoCanceladoLN();
+            string Satelite = "AplicacionCesionSI";
+            string Programa = "AplicacionCesion";
+            InterfazGestor ImplementacionGestor = new AplicacionCesionLN();
 
             DataSet DTGestor = new DataSet();
             String DsGestor = new WsConsultas().ConsultaGenericaSateliteGestor(ImplementacionGestor, Satelite, Programa);
