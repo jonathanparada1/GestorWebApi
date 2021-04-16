@@ -14,11 +14,18 @@ namespace WebGestor.Controllers
     {
         // GET: GrabacionProrroga
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        [HttpGet]
+        [HttpPost]
 
-        public Object Get()
+        public Object PostGrabacionProrroga([FromBody] ParametrosEN ObjParametros)
         {
-            string Satelite = "GrabacionProrrogaSI";
+            ParametrosEN ObjParametro2 = new ParametrosEN();
+            ObjParametro2.token = ObjParametros.token;//Objeto de entrada del metodo
+
+            ParametrosLN ObjValidacionLN = new ParametrosLN();
+
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametro2) == "Si")
+            {
+                string Satelite = "GrabacionProrrogaSI";
             string Programa = "GrabacionProrroga";
             InterfazGestor ImplementacionGestor = new GrabacionProrrogaLN();
             InterfazFind FindGenerico = new ConsultaFindGenericoLN(); //Cambiar Find Diferente
@@ -30,7 +37,21 @@ namespace WebGestor.Controllers
             System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
             DTGestor.ReadXml(xmlGestor);
             return DTGestor;
-
         }
+            else
+            {
+                DataTable DtEerror = new WsConsultas().AgregarTabla("Autenticacion", "Autenticacion Invalida");
+        DataSet DTGestor = new DataSet();
+        DTGestor.Tables.Add(DtEerror);
+
+                String DsGestor = DTGestor.GetXml();
+        DataSet DsError = new DataSet();
+
+        System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+        DsError.ReadXml(xmlGestor);
+                return DsError;
+             }
+
+}
     }
 }

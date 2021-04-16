@@ -14,23 +14,44 @@ namespace WebGestor.Controllers
     {
         // GET: ActualizaDatosCli
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        [HttpGet]
+        [HttpPost]
 
-        //[Route("api/Gestor/CambioConcesionario")]
-        public Object Get()
+        public Object PostActualizaDatosCli([FromBody] ParametrosEN ObjParametros)
         {
-            string Satelite = "ActualizaDatosCliSI";
-            string Programa = "ActualizaDatosCli";
-            InterfazGestor ImplementacionGestor = new ActualizaDatosCliLN();
-            InterfazFind FindGenerico = new ConsultaFindGenericoLN(); //Cambiar Find Diferente
-            ClassGenericaSateliteEN GenericoEN = new ClassGenericaSateliteEN(); // Cambiar 
-            InterfazCodigo Codigo = new PeticionCompuesta();
+            ParametrosEN ObjParametro2 = new ParametrosEN();
+            ObjParametro2.token = ObjParametros.token;//Objeto de entrada del metodo
 
-            DataSet DTGestor = new DataSet();
-            String DsGestor = new WsConsultas().ConsultaGenericaSateliteGestor(ImplementacionGestor, Satelite, Programa, FindGenerico, GenericoEN, Codigo);
-            System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
-            DTGestor.ReadXml(xmlGestor);
-            return DTGestor;
+            ParametrosLN ObjValidacionLN = new ParametrosLN();
+
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametro2) == "Si")
+            {
+                string Satelite = "ActualizaDatosCliSI";
+                string Programa = "ActualizaDatosCli";
+                InterfazGestor ImplementacionGestor = new ActualizaDatosCliLN();
+                InterfazFind FindGenerico = new ConsultaFindGenericoLN(); //Cambiar Find Diferente
+                ClassGenericaSateliteEN GenericoEN = new ClassGenericaSateliteEN(); // Cambiar 
+                InterfazCodigo Codigo = new PeticionCompuesta();
+
+                DataSet DTGestor = new DataSet();
+                String DsGestor = new WsConsultas().ConsultaGenericaSateliteGestor(ImplementacionGestor, Satelite, Programa, FindGenerico, GenericoEN, Codigo);
+                System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+                DTGestor.ReadXml(xmlGestor);
+                return DTGestor;
+
+            }
+            else
+            {
+                DataTable DtEerror = new WsConsultas().AgregarTabla("Autenticacion", "Autenticacion Invalida");
+                DataSet DTGestor = new DataSet();
+                DTGestor.Tables.Add(DtEerror);
+
+                String DsGestor = DTGestor.GetXml();
+                DataSet DsError = new DataSet();
+
+                System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+                DsError.ReadXml(xmlGestor);
+                return DsError;
+            }
         }
     }
 }

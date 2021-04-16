@@ -12,13 +12,20 @@ namespace WebGestor.Controllers
 {
     public class CambioBienController : ApiController
     {
-        // GET: CambioBien
+        // POST: CambioBien
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        [HttpGet]
+        [HttpPost]
 
-        public Object Get()
+        public Object PostCambioBien([FromBody] ParametrosEN ObjParametros)
         {
-            string Satelite = "CambioBienSI";
+            ParametrosEN ObjParametro2 = new ParametrosEN();
+            ObjParametro2.token = ObjParametros.token;//Objeto de entrada del metodo
+
+            ParametrosLN ObjValidacionLN = new ParametrosLN();
+
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametro2) == "Si")
+            {
+                string Satelite = "CambioBienSI";
             string Programa = "CambioBien";
             InterfazGestor ImplementacionGestor = new CambioBienLN();
             InterfazFind FindGenerico = new ConsultaFindGenericoLN(); //Cambiar Find Diferente
@@ -31,5 +38,19 @@ namespace WebGestor.Controllers
             DTGestor.ReadXml(xmlGestor);
             return DTGestor;
         }
+            else
+            {
+                DataTable DtEerror = new WsConsultas().AgregarTabla("Autenticacion", "Autenticacion Invalida");
+        DataSet DTGestor = new DataSet();
+        DTGestor.Tables.Add(DtEerror);
+
+                String DsGestor = DTGestor.GetXml();
+        DataSet DsError = new DataSet();
+
+        System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+        DsError.ReadXml(xmlGestor);
+                return DsError;
+             }
+}
     }
 }

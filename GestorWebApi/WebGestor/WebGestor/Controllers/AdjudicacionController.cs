@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Data;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using WebGestor.Codigo;
 using WebGestor.Consulta;
 using WsGestor.EN.Tablas;
 using WsGestor.LN.Consultas;
-using System.Collections.Generic;
-using WsGestor.LN.Codigo;
 
 namespace WebGestor.Controllers
 {
     public class AdjudicacionController : ApiController
     {
-        // GET: Adjudicacion
+        // POST: Adjudicacion
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
 
         public Object PostAdjudicacion([FromBody] ParametrosEN ObjParametros)
         {
-
             ParametrosEN ObjParametro2 = new ParametrosEN();
             ObjParametro2.token = ObjParametros.token;//Objeto de entrada del metodo
 

@@ -12,12 +12,20 @@ namespace WebGestor.Controllers
 {
     public class EstadoCanceladoController : ApiController
     {
+        // POST: EstadoCancelado
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        [HttpGet]
-        //[Route("api/Gestor/EstadoCancelado")]
-        public Object Get()
+        [HttpPost]
+
+        public Object PostEstadoCancelado([FromBody] ParametrosEN ObjParametros)
         {
-            string Satelite = "EstadoCanceladoSI";
+            ParametrosEN ObjParametro2 = new ParametrosEN();
+            ObjParametro2.token = ObjParametros.token;//Objeto de entrada del metodo
+
+            ParametrosLN ObjValidacionLN = new ParametrosLN();
+
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametro2) == "Si")
+            {
+                string Satelite = "EstadoCanceladoSI";
             string Programa = "EstadoCancelado";
             InterfazGestor ImplementacionGestor = new EstadoCanceladoLN();
             InterfazFind FindGenerico = new ConsultaFindGenericoLN(); //Cambiar Find Diferente
@@ -29,6 +37,20 @@ namespace WebGestor.Controllers
             System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
             DTGestor.ReadXml(xmlGestor);
             return DTGestor;
+            }
+            else
+            {
+                DataTable DtEerror = new WsConsultas().AgregarTabla("Autenticacion", "Autenticacion Invalida");
+                DataSet DTGestor = new DataSet();
+                DTGestor.Tables.Add(DtEerror);
+
+                String DsGestor = DTGestor.GetXml();
+                DataSet DsError = new DataSet();
+
+                System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+                DsError.ReadXml(xmlGestor);
+                return DsError;
+            }
         }
     }
 }
