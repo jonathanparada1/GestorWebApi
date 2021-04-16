@@ -32,18 +32,43 @@ namespace WebGestor.EN.Conversiones
                 return "";
             else
             {
-                int año = Convert.ToInt32(date.Substring(0, 2)) + 2000;
-                int mes = Convert.ToInt32(date.Substring(2, 2));
-                int dia = Convert.ToInt32(date.Substring(4, 2));
-                int hora = Convert.ToInt32(date.Substring(6, 2));
-                int min = Convert.ToInt32(date.Substring(8, 2));
+                DateTime fechaGestor;
 
-                DateTime fechaGestor = new DateTime(año, mes, dia, hora, min, 0);
-
-                fechaSalidaGestor = fechaGestor.ToString("dd/MM/yyyy HH:mm");
+                if (date.Length == 6)
+                {
+                    int año = Convert.ToInt32(date.Substring(0, 2)) + 2000;
+                    int mes = Convert.ToInt32(date.Substring(2, 2));
+                    int dia = Convert.ToInt32(date.Substring(4, 2));
+                    fechaGestor = new DateTime(año, mes, dia);
+                    fechaSalidaGestor = fechaGestor.ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    int año = Convert.ToInt32(date.Substring(0, 2)) + 2000;
+                    int mes = Convert.ToInt32(date.Substring(2, 2));
+                    int dia = Convert.ToInt32(date.Substring(4, 2));
+                    int hora = Convert.ToInt32(date.Substring(6, 2));
+                    int min = Convert.ToInt32(date.Substring(8, 2));
+                    fechaGestor = new DateTime(año, mes, dia, hora, min, 0);
+                    fechaSalidaGestor = fechaGestor.ToString("dd/MM/yyyy HH:mm");
+                }
             }
-
             return fechaSalidaGestor;
+        }
+
+        public static String fechaJulianaToGregoriana(long fechaJuliana)
+        {
+            if (fechaJuliana == 0)
+                return "";
+
+            return DateTime.FromOADate(Convert.ToDouble(fechaJuliana + 10594)).ToString("dd/MM/yyyy");
+        }
+
+
+
+        public static String ConvertToJuliana(String Date)
+        {
+            return Convert.ToString(Math.Truncate(Convert.ToDateTime(Date).ToOADate() - 10594));
         }
 
         public static string ConvertFechaEstructura(String date)

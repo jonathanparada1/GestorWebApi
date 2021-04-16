@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsGestor.EN", "WsGestor.EN\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsGestor.LN", "WsGestor.LN\WsGestor.LN.csproj", "{49E00D00-8045-47C1-9CEC-2BACE43C7EFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsGestor.AD", "WsGestor.AD\WsGestor.AD.csproj", "{AA3F36E7-DD0D-4DF6-B347-61F23A6538CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{49E00D00-8045-47C1-9CEC-2BACE43C7EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49E00D00-8045-47C1-9CEC-2BACE43C7EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49E00D00-8045-47C1-9CEC-2BACE43C7EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA3F36E7-DD0D-4DF6-B347-61F23A6538CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3F36E7-DD0D-4DF6-B347-61F23A6538CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3F36E7-DD0D-4DF6-B347-61F23A6538CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3F36E7-DD0D-4DF6-B347-61F23A6538CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

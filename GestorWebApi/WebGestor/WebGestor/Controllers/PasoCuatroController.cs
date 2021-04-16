@@ -1,39 +1,39 @@
 ﻿using System;
 using System.Data;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using WebGestor.Codigo;
 using WebGestor.Consulta;
 using WsGestor.EN.Tablas;
 using WsGestor.LN.Consultas;
-using System.Collections.Generic;
-using WsGestor.LN.Codigo;
+using WsGestor.LN.Find;
+using WsGestor.LN.Resultados;
+using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 
 namespace WebGestor.Controllers
 {
-    public class AdjudicacionController : ApiController
+    public class PasoCuatroController : ApiController
     {
-        // GET: Adjudicacion
+        // POST: PasoCuatro
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
 
-        public Object PostAdjudicacion([FromBody] ParametrosEN ObjParametros)
+        public Object InsertaPasoCuatro([FromBody] PasoCuatroEN GenericoEN)
         {
 
-            ParametrosEN ObjParametro2 = new ParametrosEN();
-            ObjParametro2.token = ObjParametros.token;//Objeto de entrada del metodo
+            ParametrosEN ObjParametros = new ParametrosEN();
+            ObjParametros.token = GenericoEN.token;
 
             ParametrosLN ObjValidacionLN = new ParametrosLN();
 
-            if (ObjValidacionLN.ValidarTokenLN(ObjParametro2) == "Si")
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametros) == "Si")
             {
-                string Satelite = "AdjudicacionSI";
-                string Programa = "Adjudicacion";
-                InterfazGestor ImplementacionGestor = new AdjudicacionLN();
-                InterfazFind FindGenerico = new ConsultaFindGenericoLN(); //Cambiar Find Diferente
-                ClassGenericaSateliteEN GenericoEN = new ClassGenericaSateliteEN(); // Cambiar 
-                InterfazCodigo Codigo = new PeticionCompuesta();
+                string Satelite = "ProprenSI";
+                string Programa = "Propren";
+                InterfazGestor ImplementacionGestor = new ResultadoGenericoLN();
+
+                InterfazFind FindGenerico = new PasoCuatroFindLN(); //Cambiar Find Diferente Clase Especifica
+                InterfazCodigo Codigo = new Peticion(); //Cambia si es simple o compuesta
 
                 DataSet DTGestor = new DataSet();
                 String DsGestor = new WsConsultas().ConsultaGenericaSateliteGestor(ImplementacionGestor, Satelite, Programa, FindGenerico, GenericoEN, Codigo);
@@ -53,7 +53,8 @@ namespace WebGestor.Controllers
                 System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
                 DsError.ReadXml(xmlGestor);
                 return DsError;
-             }
+
+            }
         }
     }
 }

@@ -45,19 +45,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consultas\ActualizaDatosCliLN.cs" />
-    <Compile Include="Consultas\AdjudicacionLN.cs" />
-    <Compile Include="Consultas\AnulaAdjudicacionLN.cs" />
-    <Compile Include="Consultas\AplicacionCesionLN.cs" />
-    <Compile Include="Consultas\CambioBienLN.cs" />
-    <Compile Include="Consultas\CambioConcesionarioLN.cs" />
+    <Compile Include="Codigo\Encriptador.cs" />
+    <Compile Include="Consultas\DBConsultaLN.cs" />
+    <Compile Include="Consultas\ParametrosLN.cs" />
+    <Compile Include="Find\CodeudorFindLN.cs" />
+    <Compile Include="Find\GarantiaFindLN.cs" />
+    <Compile Include="Find\PagareFindLN.cs" />
+    <Compile Include="Find\PasoCuatroFindLN.cs" />
+    <Compile Include="Find\PropenswFindLN.cs" />
+    <Compile Include="Resultados\ActualizaDatosCliLN.cs" />
+    <Compile Include="Resultados\AdjudicacionLN.cs" />
+    <Compile Include="Resultados\AnulaAdjudicacionLN.cs" />
+    <Compile Include="Resultados\AplicacionCesionLN.cs" />
+    <Compile Include="Resultados\CambioBienLN.cs" />
+    <Compile Include="Resultados\CambioConcesionarioLN.cs" />
     <Compile Include="Consultas\ClassGenericaSatelitesLN.cs" />
-    <Compile Include="Consultas\EstadoCanceladoLN.cs" />
-    <Compile Include="Consultas\GrabacionProrrogaLN.cs" />
-    <Compile Include="Consultas\InterfazGestor.cs" />
+    <Compile Include="Find\ConsultasFindLN.cs" />
+    <Compile Include="Resultados\CodeudorLN.cs" />
+    <Compile Include="Resultados\EstadoCanceladoLN.cs" />
+    <Compile Include="Resultados\GarantiaLN.cs" />
+    <Compile Include="Resultados\GrabacionProrrogaLN.cs" />
+    <Compile Include="Find\InferfazFind.cs" />
+    <Compile Include="Resultados\InterfazGestor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resultados\PagareLN.cs" />
+    <Compile Include="Resultados\PropenswLN.cs" />
+    <Compile Include="Resultados\ResultadoGenericoLN.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WsGestor.AD\WsGestor.AD.csproj">
+      <Project>{aa3f36e7-dd0d-4df6-b347-61f23a6538cc}</Project>
+      <Name>WsGestor.AD</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WsGestor.EN\WsGestor.EN.csproj">
       <Project>{d11391c7-0b44-4788-bddc-15a156536b4a}</Project>
       <Name>WsGestor.EN</Name>

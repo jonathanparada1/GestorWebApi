@@ -213,6 +213,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Codigo\InterfazCodigo.cs" />
     <Compile Include="Codigo\Peticion.cs" />
     <Compile Include="Codigo\PeticionCaracter.cs" />
     <Compile Include="Codigo\PeticionCompuesta.cs" />
@@ -222,9 +223,15 @@
     <Compile Include="Controllers\AnulaAdjudicacionController.cs" />
     <Compile Include="Controllers\AplicacionCesionController.cs" />
     <Compile Include="Controllers\CambioBienController.cs" />
+    <Compile Include="Controllers\CodeudorController.cs" />
     <Compile Include="Controllers\EstadoCanceladoController.cs" />
     <Compile Include="Controllers\CambioConcesionarioController.cs" />
+    <Compile Include="Controllers\GarantiaController.cs" />
     <Compile Include="Controllers\GrabacionProrrogaController.cs" />
+    <Compile Include="Controllers\PagareController.cs" />
+    <Compile Include="Controllers\PasoCuatroController.cs" />
+    <Compile Include="Controllers\PropenswController.cs" />
+    <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -287,7 +294,13 @@
     <Folder Include="Views\Adjudicacion\" />
     <Folder Include="Views\AnulaAdjudicacion\" />
     <Folder Include="Views\CambioConcesionario\" />
+    <Folder Include="Views\Codeudor\" />
     <Folder Include="Views\EstadoCancelado\" />
+    <Folder Include="Views\Garantia\" />
+    <Folder Include="Views\Pagare\" />
+    <Folder Include="Views\ProcesoComite\" />
+    <Folder Include="Views\Propensw\" />
+    <Folder Include="Views\Token\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

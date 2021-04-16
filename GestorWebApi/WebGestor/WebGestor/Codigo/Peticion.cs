@@ -6,9 +6,9 @@ using System.Web;
 
 namespace WebGestor.Codigo
 {
-    public class Peticion
+    public class Peticion : InterfazCodigo
     {
-        public DataSet Resultado(DataSet DsInformacion, char[] delimiterChars)
+        public override DataSet Resultado(DataSet DsInformacion, char[] delimiterChars)
         {
             DataSet DsResultado = new DataSet();
 
@@ -44,24 +44,21 @@ namespace WebGestor.Codigo
                         }
                     }
                 }
-
                 DsResultado.Tables.Add(dtImage);
                 return DsResultado;
             }
             catch (Exception ex)
             {
-
                 return DsResultado;
             }
         }
 
-        public string[] ObtenerRandom(DataSet dsConsulta)
+        public override string[] ObtenerRandom(DataSet dsConsulta)
         {
             string[] array = new string[2];
 
             try
             {
-
                 array[0] = dsConsulta.Tables["parm_output"].Rows[0]["l_PROGRAMA"].ToString();
                 array[1] = dsConsulta.Tables["parm_output"].Rows[0]["l_RANDOMX"].ToString();
 

@@ -43,7 +43,13 @@
   <ItemGroup>
     <Compile Include="Conversiones\FormateoCampos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tablas\CodeudorEN.cs" />
+    <Compile Include="Tablas\GarantiaEN.cs" />
+    <Compile Include="Tablas\PagareEN.cs" />
+    <Compile Include="Tablas\ParametrosEN.cs" />
+    <Compile Include="Tablas\PasoCuatroEN.cs" />
     <Compile Include="Tablas\ClassGenericaSateliteEN.cs" />
+    <Compile Include="Tablas\PropenswEN.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,7 +16,7 @@ namespace WsGestor.LN.Consultas
     public class ClassGenericaSatelitesLN
     {
 
-        public DataSet Consulta(ClassGenericaSateliteEN  Obj, string URL)
+        public DataSet Consulta(Object  Obj, string URL)
         {
             DataSet dsResultadoFind = new DataSet();
 

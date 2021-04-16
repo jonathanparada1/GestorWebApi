@@ -3,9 +3,9 @@ using System.Data;
 
 namespace WebGestor.Codigo
 {
-    public class PeticionCompuesta
+    public class PeticionCompuesta : InterfazCodigo
     {
-        public DataSet Resultado(DataSet DsInformacion, char[] delimiterChars)
+        public override DataSet Resultado(DataSet DsInformacion, char[] delimiterChars)
         {
             DataSet DsResultado = new DataSet();
 
@@ -66,7 +66,7 @@ namespace WebGestor.Codigo
             }
         }
 
-        public string[] ObtenerRandom(DataSet dsConsulta)
+        public override string[] ObtenerRandom(DataSet dsConsulta)
         {
             string[] array = new string[2];
 
