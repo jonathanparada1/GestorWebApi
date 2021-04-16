@@ -13,14 +13,14 @@ namespace WsGestor.LN.Resultados
             DTConsultaGenerico.TableName = "Final";
             
             // 2. Agregar nombre de los campos
-            DTConsultaGenerico.Columns.Add("Resultado");
+            DTConsultaGenerico.Columns.Add("Registro");
 
             //3. Agregar la información
             for (int i = 0; i < DsResultado.Tables["Resultado"].Rows.Count; i++)
             {
                 DTConsultaGenerico.Rows.Add(
 
-                 DsResultado.Tables["Resultado"].Rows[i]["Resultado"].ToString().Trim());
+                 DsResultado.Tables["Resultado"].Rows[i]["Registro"].ToString().Trim());
             }
             return DTConsultaGenerico;
 
