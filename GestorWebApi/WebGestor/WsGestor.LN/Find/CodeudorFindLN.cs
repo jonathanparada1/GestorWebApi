@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WsGestor.EN.Tablas;
+﻿using WsGestor.EN.Tablas;
 using WsGestor.LN.Consultas;
 
 namespace WsGestor.LN.Find

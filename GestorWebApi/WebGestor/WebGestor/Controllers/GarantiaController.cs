@@ -20,8 +20,14 @@ namespace WebGestor.Controllers
 
         public Object Codeudor([FromBody] GarantiaEN GenericoEN)//Cambiar En Diferente a clase Especifica
         {
+            ParametrosEN ObjParametros = new ParametrosEN();
+            ObjParametros.token = GenericoEN.token;
 
-            string Satelite = "GarantiaSI";
+            ParametrosLN ObjValidacionLN = new ParametrosLN();
+
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametros) == "Si")
+            {
+                string Satelite = "GarantiaSI";
             string Programa = "Garantia";
             InterfazGestor ImplementacionGestor = new GarantiaLN(); //Se cambia de acuerdo a los parametros 
 
@@ -34,5 +40,20 @@ namespace WebGestor.Controllers
             DTGestor.ReadXml(xmlGestor);
             return DTGestor;
         }
+            else
+            {
+                DataTable DtEerror = new WsConsultas().AgregarTabla("Autenticacion", "Autenticacion Invalida");
+        DataSet DTGestor = new DataSet();
+        DTGestor.Tables.Add(DtEerror);
+
+                String DsGestor = DTGestor.GetXml();
+        DataSet DsError = new DataSet();
+
+        System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+        DsError.ReadXml(xmlGestor);
+                return DsError;
+
+            }
+}
     }
 }

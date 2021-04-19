@@ -50,7 +50,8 @@ namespace WsGestor.EN.Tablas
         public string l_OBS_3 { get; set; }
         public string l_CLAVE { get; set; }
         public string l_CODIGO { get; set; }
-
+        //Parametros Autenticacion
+        public string token { get; set; }
 
         public string l_PROGRAMA { get; set; }
         public string l_RANDOMX { get; set; }

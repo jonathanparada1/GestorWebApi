@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Data;
-using System.Web;
 using WsGestor.EN.Tablas;
 using WsGestor.LN.Consultas;
 using WebGestor.Codigo;

@@ -21,18 +21,40 @@ namespace WebGestor.Controllers
         public Object Codeudor([FromBody] CodeudorEN GenericoEN)//Cambiar En Diferente a clase Especifica
         {
 
-            string Satelite = "CodeudorSI";
-            string Programa = "Codeudor";
-            InterfazGestor ImplementacionGestor = new CodeudorLN();//Se debe cambiar de acuerdo al resultado esperado
+            ParametrosEN ObjParametros = new ParametrosEN();
+            ObjParametros.token = GenericoEN.token;
 
-            InterfazFind FindGenerico = new CodeudorFindLN(); //Cambiar Find Diferente Clase Especifica
-            InterfazCodigo Codigo = new Peticion(); //Cambia si es simple o compuesta
+            ParametrosLN ObjValidacionLN = new ParametrosLN();
 
-            DataSet DTGestor = new DataSet();
-            String DsGestor = new WsConsultas().ConsultaGenericaSateliteGestor(ImplementacionGestor, Satelite, Programa, FindGenerico, GenericoEN, Codigo);
-            System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
-            DTGestor.ReadXml(xmlGestor);
-            return DTGestor;
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametros) == "Si")
+            {
+                string Satelite = "CodeudorSI";
+                string Programa = "Codeudor";
+                InterfazGestor ImplementacionGestor = new CodeudorLN();//Se debe cambiar de acuerdo al resultado esperado
+
+                InterfazFind FindGenerico = new CodeudorFindLN(); //Cambiar Find Diferente Clase Especifica
+                InterfazCodigo Codigo = new Peticion(); //Cambia si es simple o compuesta
+
+                DataSet DTGestor = new DataSet();
+                String DsGestor = new WsConsultas().ConsultaGenericaSateliteGestor(ImplementacionGestor, Satelite, Programa, FindGenerico, GenericoEN, Codigo);
+                System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+                DTGestor.ReadXml(xmlGestor);
+                return DTGestor;
+            }
+            else
+            {
+                DataTable DtEerror = new WsConsultas().AgregarTabla("Autenticacion", "Autenticacion Invalida");
+                DataSet DTGestor = new DataSet();
+                DTGestor.Tables.Add(DtEerror);
+
+                String DsGestor = DTGestor.GetXml();
+                DataSet DsError = new DataSet();
+
+                System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+                DsError.ReadXml(xmlGestor);
+                return DsError;
+
+            }
         }
     }
 }

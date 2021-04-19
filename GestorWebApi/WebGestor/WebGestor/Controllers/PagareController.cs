@@ -20,7 +20,13 @@ namespace WebGestor.Controllers
 
         public Object Pagare([FromBody] PagareEN GenericoEN)//Cambiar En Diferente a clase Especifica
         {
+            ParametrosEN ObjParametros = new ParametrosEN();
+            ObjParametros.token = GenericoEN.token;
 
+            ParametrosLN ObjValidacionLN = new ParametrosLN();
+
+            if (ObjValidacionLN.ValidarTokenLN(ObjParametros) == "Si")
+            {
             string Satelite = "PagareSI";
             string Programa = "Pagare";
             InterfazGestor ImplementacionGestor = new PagareLN();//Se debe cambiar de acuerdo al resultado esperado
@@ -33,6 +39,21 @@ namespace WebGestor.Controllers
             System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
             DTGestor.ReadXml(xmlGestor);
             return DTGestor;
+            }
+            else
+            {
+                DataTable DtEerror = new WsConsultas().AgregarTabla("Autenticacion", "Autenticacion Invalida");
+                DataSet DTGestor = new DataSet();
+                DTGestor.Tables.Add(DtEerror);
+
+                String DsGestor = DTGestor.GetXml();
+                DataSet DsError = new DataSet();
+
+                System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
+                DsError.ReadXml(xmlGestor);
+                return DsError;
+
+            }
         }
     }
 }
