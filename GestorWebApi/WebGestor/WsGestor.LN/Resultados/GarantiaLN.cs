@@ -27,14 +27,22 @@ namespace WsGestor.LN.Resultados
             //DTConsultaGenerico.Columns.Add("Valor");
             //DTConsultaGenerico.Columns.Add("Usuario");
 
-            DTConsultaGenerico.Columns.Add("Mensaje");
+            if (DsResultado.Tables[0].Columns.Contains("Mensaje"))
+            {
+                DTConsultaGenerico.Columns.Add("Mensaje");
+            }
+            else if (DsResultado.Tables[0].Columns.Contains("Error"))
+            {
+                DTConsultaGenerico.Columns.Add("Error");
+            }
 
             //3. Agregar la información
             for (int i = 0; i < DsResultado.Tables["Resultado"].Rows.Count; i++)
             {
                 DTConsultaGenerico.Rows.Add(
 
-                 DsResultado.Tables["Resultado"].Rows[i]["Mensaje"].ToString().Trim()
+                 DTConsultaGenerico.Columns.Contains("Mensaje") ? DsResultado.Tables["Resultado"].Rows[i]["Mensaje"].ToString().Trim() :
+                                                                  DsResultado.Tables["Resultado"].Rows[i]["Error"].ToString().Trim()
                  //, FormateoCampos.fechaJulianaToGregoriana(Convert.ToInt64(DsResultado.Tables["Resultado"].Rows[i]["FechaMovimiento"].ToString().Trim()))
                  //, FormateoCampos.fechaJulianaToGregoriana(Convert.ToInt64(DsResultado.Tables["Resultado"].Rows[i]["FechaRadicacion"].ToString().Trim()))
                  //, DsResultado.Tables["Resultado"].Rows[i]["Observacion 1"].ToString().Trim()
