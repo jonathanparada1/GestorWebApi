@@ -10,7 +10,7 @@ namespace WsGestor.LN.Resultados
             DataTable DTConsultaGenerico = new DataTable();
 
             // 1. Agregar nombre de la tabla
-            DTConsultaGenerico.TableName = "ResultadoCodeudor";
+            DTConsultaGenerico.TableName = "ResultadoPasoCuatro";
 
             // 2. Agregar nombre de los campos
             //DTConsultaGenerico.Columns.Add("Cupo");
