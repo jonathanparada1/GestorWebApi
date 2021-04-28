@@ -74,6 +74,7 @@
     <Compile Include="Resultados\InterfazGestor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resultados\PagareLN.cs" />
+    <Compile Include="Resultados\PasoCuatroLN.cs" />
     <Compile Include="Resultados\PropenswLN.cs" />
     <Compile Include="Resultados\ResultadoGenericoLN.cs" />
   </ItemGroup>

@@ -3,26 +3,23 @@ using WsGestor.LN.Consultas;
 
 namespace WsGestor.LN.Resultados
 {
-    public class GarantiaLN : InterfazGestor
+    public class PasoCuatroLN : InterfazGestor
     {
         public override DataTable DataTableGenerico(DataSet DsResultado)
         {
             DataTable DTConsultaGenerico = new DataTable();
 
             // 1. Agregar nombre de la tabla
-            DTConsultaGenerico.TableName = "ResultadoGarantia";
+            DTConsultaGenerico.TableName = "ResultadoCodeudor";
 
             // 2. Agregar nombre de los campos
             //DTConsultaGenerico.Columns.Add("Cupo");
             //DTConsultaGenerico.Columns.Add("FechaMovimiento");
             //DTConsultaGenerico.Columns.Add("FechaRadicacion");
-            //DTConsultaGenerico.Columns.Add("Observacion 1");
-            //DTConsultaGenerico.Columns.Add("Observacion 2");
-            //DTConsultaGenerico.Columns.Add("Observacion 3");
+            //DTConsultaGenerico.Columns.Add("Codeudor");
+            //DTConsultaGenerico.Columns.Add("Vehiculo");
             //DTConsultaGenerico.Columns.Add("NroCons");
             //DTConsultaGenerico.Columns.Add("Paso Ejecutado");
-            //DTConsultaGenerico.Columns.Add("Placa");
-            //DTConsultaGenerico.Columns.Add("Valor");
             //DTConsultaGenerico.Columns.Add("Usuario");
 
             if (DsResultado.Tables[0].Columns.Contains("Mensaje"))
@@ -39,17 +36,15 @@ namespace WsGestor.LN.Resultados
             {
                 DTConsultaGenerico.Rows.Add(
 
-                 DTConsultaGenerico.Columns.Contains("Mensaje") ? DsResultado.Tables["Resultado"].Rows[i]["Mensaje"].ToString().Trim() :
-                                                                  DsResultado.Tables["Resultado"].Rows[i]["Error"].ToString().Trim()
+                DTConsultaGenerico.Columns.Contains("Mensaje") ? DsResultado.Tables["Resultado"].Rows[i]["Mensaje"].ToString().Trim() :
+                                                                 DsResultado.Tables["Resultado"].Rows[i]["Error"].ToString().Trim()
+                 //DsResultado.Tables["Resultado"].Rows[i]["Cupo"].ToString().Trim()
                  //, FormateoCampos.fechaJulianaToGregoriana(Convert.ToInt64(DsResultado.Tables["Resultado"].Rows[i]["FechaMovimiento"].ToString().Trim()))
                  //, FormateoCampos.fechaJulianaToGregoriana(Convert.ToInt64(DsResultado.Tables["Resultado"].Rows[i]["FechaRadicacion"].ToString().Trim()))
-                 //, DsResultado.Tables["Resultado"].Rows[i]["Observacion 1"].ToString().Trim()
-                 //, DsResultado.Tables["Resultado"].Rows[i]["Observacion 2"].ToString().Trim()
-                 //, DsResultado.Tables["Resultado"].Rows[i]["Observacion 3"].ToString().Trim()
+                 //, DsResultado.Tables["Resultado"].Rows[i]["Codeudor"].ToString().Trim()
+                 //, DsResultado.Tables["Resultado"].Rows[i]["Vehiculo"].ToString().Trim()
                  //, DsResultado.Tables["Resultado"].Rows[i]["NroCons"].ToString().Trim()
                  //, DsResultado.Tables["Resultado"].Rows[i]["Paso Ejecutado"].ToString().Trim()
-                 //, DsResultado.Tables["Resultado"].Rows[i]["Placa"].ToString().Trim()
-                 //, DsResultado.Tables["Resultado"].Rows[i]["Valor"].ToString().Trim()
                  //, DsResultado.Tables["Resultado"].Rows[i]["Usuario"].ToString().Trim()
                  );
             }

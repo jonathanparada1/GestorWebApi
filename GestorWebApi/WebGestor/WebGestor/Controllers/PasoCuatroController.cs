@@ -30,7 +30,7 @@ namespace WebGestor.Controllers
             {
                 string Satelite = "ProprenSI";
                 string Programa = "Propren";
-                InterfazGestor ImplementacionGestor = new ResultadoGenericoLN();
+                InterfazGestor ImplementacionGestor = new PasoCuatroLN();
 
                 InterfazFind FindGenerico = new PasoCuatroFindLN(); //Cambiar Find Diferente Clase Especifica
                 InterfazCodigo Codigo = new Peticion(); //Cambia si es simple o compuesta
