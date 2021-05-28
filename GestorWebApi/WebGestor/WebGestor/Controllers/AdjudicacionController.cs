@@ -14,7 +14,6 @@ namespace WebGestor.Controllers
         // POST: Adjudicacion
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
-
         public Object PostAdjudicacion([FromBody] ParametrosEN ObjParametros)
         {
             ParametrosEN ObjParametro2 = new ParametrosEN();
@@ -28,7 +27,7 @@ namespace WebGestor.Controllers
                 string Programa = "Adjudicacion";
                 InterfazGestor ImplementacionGestor = new AdjudicacionLN();
                 InterfazFind FindGenerico = new ConsultaFindGenericoLN(); //Cambiar Find Diferente
-                ClassGenericaSateliteEN GenericoEN = new ClassGenericaSateliteEN(); // Cambiar 
+                ClassGenericaSateliteEN GenericoEN = new ClassGenericaSateliteEN(); // Cambiar
                 InterfazCodigo Codigo = new PeticionCompuesta();
 
                 DataSet DTGestor = new DataSet();
@@ -49,7 +48,7 @@ namespace WebGestor.Controllers
                 System.IO.StringReader xmlGestor = new System.IO.StringReader(DsGestor);
                 DsError.ReadXml(xmlGestor);
                 return DsError;
-             }
+            }
         }
     }
 }

@@ -216,6 +216,7 @@
     <Compile Include="Codigo\PeticionCompuesta.cs" />
     <Compile Include="Consulta\WsConsultas.cs" />
     <Compile Include="Controllers\ActualizaDatosCliController.cs" />
+    <Compile Include="Controllers\AdjNeoRedController.cs" />
     <Compile Include="Controllers\AdjudicacionController.cs" />
     <Compile Include="Controllers\AnulaAdjudicacionController.cs" />
     <Compile Include="Controllers\AplicacionCesionController.cs" />
@@ -289,6 +290,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AdjNeoRed\" />
     <Folder Include="Views\Adjudicacion\" />
     <Folder Include="Views\AnulaAdjudicacion\" />
     <Folder Include="Views\CambioConcesionario\" />

@@ -92,6 +92,5 @@ namespace WebGestor.Consulta
             dtImage.Rows.Add(Valor, Validacion);
             return dtImage;
         }
-
     }
 }
