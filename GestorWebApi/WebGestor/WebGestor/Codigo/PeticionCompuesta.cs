@@ -61,7 +61,6 @@ namespace WebGestor.Codigo
             }
             catch (Exception ex)
             {
-
                 return DsResultado;
             }
         }
@@ -72,7 +71,6 @@ namespace WebGestor.Codigo
 
             try
             {
-
                 array[0] = dsConsulta.Tables["parm_output"].Rows[0]["l_PROGRAMA"].ToString();
                 array[1] = dsConsulta.Tables["parm_output"].Rows[0]["l_RANDOMX"].ToString();
 
