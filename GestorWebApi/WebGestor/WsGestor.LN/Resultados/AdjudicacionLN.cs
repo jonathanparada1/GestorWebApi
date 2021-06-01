@@ -65,12 +65,10 @@ namespace WsGestor.LN.Consultas
             DTConsultaGenerico.Columns.Add("Codigo_Adjudicacion");
             DTConsultaGenerico.Columns.Add("Plan_Mantenimiento");
 
-
             //3. Agregar la información
             for (int i = 0; i < DsResultado.Tables["Resultado"].Rows.Count; i++)
             {
                 DTConsultaGenerico.Rows.Add(
-
                 DsResultado.Tables["Resultado"].Rows[i]["ID-LLAVE"].ToString().Trim()
                 , DsResultado.Tables["Resultado"].Rows[i]["CONTRATO"].ToString().Trim()
                 , DsResultado.Tables["Resultado"].Rows[i]["USUARIO"].ToString().Trim()
@@ -91,7 +89,7 @@ namespace WsGestor.LN.Consultas
                 , DsResultado.Tables["Resultado"].Rows[i]["FUERZA-VENTA"].ToString().Trim()
                 , DsResultado.Tables["Resultado"].Rows[i]["ESTADO-AFIL"].ToString().Trim()
                 , DsResultado.Tables["Resultado"].Rows[i]["TIPO-AFIL"].ToString().Trim()
-                , DsResultado.Tables["Resultado"].Rows[i]["PRORROGA"].ToString().Trim() 
+                , DsResultado.Tables["Resultado"].Rows[i]["PRORROGA"].ToString().Trim()
                 , FormateoCampos.FormatoHTML(DsResultado.Tables["Resultado"].Rows[i]["PSNOMBRET1"].ToString().Trim())
                 , FormateoCampos.FormatoHTML(DsResultado.Tables["Resultado"].Rows[i]["PSAPELLIDOT1"].ToString().Trim())
                 , DsResultado.Tables["Resultado"].Rows[i]["TIP-DOCT1"].ToString().Trim()
@@ -122,10 +120,8 @@ namespace WsGestor.LN.Consultas
                 , DsResultado.Tables["Resultado"].Rows[i]["DEBITO-AUTO"].ToString().Trim()
                 , DsResultado.Tables["Resultado"].Rows[i]["COD-ADJ"].ToString().Trim()
                 , DsResultado.Tables["Resultado"].Rows[i]["PLAN-MTO"].ToString().Trim());
-
             }
             return DTConsultaGenerico;
         }
-
     }
 }

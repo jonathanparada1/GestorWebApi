@@ -20,6 +20,7 @@ namespace WebGestor.EN.Conversiones
                 return date;
             }
         }
+
         public static string ConvertFechaGestor(String date)
         {
             string fechaSalidaGestor = string.Empty;
@@ -52,6 +53,38 @@ namespace WebGestor.EN.Conversiones
             return fechaSalidaGestor;
         }
 
+        public static string ConvertFechaNeoRed(String date)
+        {
+            string fechaSalidaGestor = string.Empty;
+
+            if (string.IsNullOrEmpty(date) || Convert.ToInt32(date) == 0)
+                return "";
+            else
+            {
+                DateTime fechaGestor;
+
+                if (date.Length == 6)
+                {
+                    int mes = Convert.ToInt32(date.Substring(0, 2));
+                    int dia = Convert.ToInt32(date.Substring(2, 2));
+                    int año = Convert.ToInt32(date.Substring(4, 2)) + 2000;
+                    fechaGestor = new DateTime(año, mes, dia);
+                    fechaSalidaGestor = fechaGestor.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    int año = Convert.ToInt32(date.Substring(0, 2)) + 2000;
+                    int mes = Convert.ToInt32(date.Substring(2, 2));
+                    int dia = Convert.ToInt32(date.Substring(4, 2));
+                    int hora = Convert.ToInt32(date.Substring(6, 2));
+                    int min = Convert.ToInt32(date.Substring(8, 2));
+                    fechaGestor = new DateTime(año, mes, dia, hora, min, 0);
+                    fechaSalidaGestor = fechaGestor.ToString("MM/dd/yyyy HH:mm");
+                }
+            }
+            return fechaSalidaGestor;
+        }
+
         public static String fechaJulianaToGregoriana(long fechaJuliana)
         {
             if (fechaJuliana == 0)
@@ -59,8 +92,6 @@ namespace WebGestor.EN.Conversiones
 
             return DateTime.FromOADate(Convert.ToDouble(fechaJuliana + 10594)).ToString("dd/MM/yyyy");
         }
-
-
 
         public static String ConvertToJuliana(String Date)
         {
@@ -93,7 +124,6 @@ namespace WebGestor.EN.Conversiones
                 Campo = Campo + "%";
                 return Campo;
             }
-
         }
 
         public static string ConvertFechaCliente(String date)
@@ -163,7 +193,6 @@ namespace WebGestor.EN.Conversiones
                 Palabra = Palabra.Replace("ê", "&ecirc;;");
                 Palabra = Palabra.Replace("ô", "&ocirc;;");
 
-
                 Palabra = Palabra.Replace("Ã¡", "&aacute;"); //á
                 Palabra = Palabra.Replace("Ã©", "&eacute"); //é
                 Palabra = Palabra.Replace("Ã­", "&iacute");  //í
@@ -178,8 +207,6 @@ namespace WebGestor.EN.Conversiones
 
                 Palabra = Palabra.Replace("Ã‘", "&Ntilde;"); //Ñ
                 Palabra = Palabra.Replace("Ã±", "&ntilde;"); //ñ
-
-
             }
             return Palabra;
         }
