@@ -53,14 +53,12 @@
     <Compile Include="Codigo\Encriptador.cs" />
     <Compile Include="Consultas\DBConsultaLN.cs" />
     <Compile Include="Consultas\ParametrosLN.cs" />
-    <Compile Include="Find\AdjNeoRedFindLN.cs" />
     <Compile Include="Find\CodeudorFindLN.cs" />
     <Compile Include="Find\GarantiaFindLN.cs" />
     <Compile Include="Find\PagareFindLN.cs" />
     <Compile Include="Find\PasoCuatroFindLN.cs" />
     <Compile Include="Find\PropenswFindLN.cs" />
     <Compile Include="Resultados\ActualizaDatosCliLN.cs" />
-    <Compile Include="Resultados\AdjNeoRedLN.cs" />
     <Compile Include="Resultados\AdjudicacionLN.cs" />
     <Compile Include="Resultados\AnulaAdjudicacionLN.cs" />
     <Compile Include="Resultados\AplicacionCesionLN.cs" />
